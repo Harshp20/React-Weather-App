@@ -67,6 +67,7 @@ function App() {
 
   const handleClick = (searchInput: string) => {
     if (searchInput === "") return;
+    setIsLoading(true);
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
@@ -87,14 +88,16 @@ function App() {
 
   return (
     <>
-      {isLoading ? (
-        <div className="message">Loading...</div>
-      ) : showError ? (
+      {showError ? (
         <div className="message">{errorText}</div>
       ) : (
         <>
           <SearchInput handleClick={handleClick} />
-          <WeatherUI weatherData={weatherData} />
+          {isLoading ? (
+            <div className="message">Loading...</div>
+          ) : (
+            <WeatherUI weatherData={weatherData} />
+          )}
         </>
       )}
     </>
