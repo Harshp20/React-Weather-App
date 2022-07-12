@@ -22,8 +22,10 @@ interface WeatherProps {
 
 const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
   const [weatherMood, setWeatherMood] = useState("wi wi-day-cloudy");
-  const [timeCounter, setTimeCounter] = useState(new Date().toLocaleTimeString())
-  const [time, setTime] = useState('');
+  const [timeCounter, setTimeCounter] = useState(
+    new Date().toLocaleTimeString()
+  );
+  const [time, setTime] = useState("");
   const {
     weather_mood,
     temperature,
@@ -41,22 +43,18 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setTimeCounter(new Date().toLocaleTimeString())
+      setTimeCounter(new Date().toLocaleTimeString());
       setTime(() => {
-        let hours = new Date().getHours()
-        const minutes = new Date().toLocaleTimeString().slice(3, 5)
-        if(hours > 12) hours -= 12
-        return (
-          `${String(hours).padStart(2, '0')}:${minutes} ${getAmPm()}`
-        )
-      })
+        let hours = new Date().getHours();
+        const minutes = new Date().toLocaleTimeString().slice(3, 5);
+        if (hours > 12) hours -= 12;
+        return `${String(hours).padStart(2, "0")}:${minutes} ${getAmPm()}`;
+      });
     }, 1000);
-
-    
   }, [timeCounter]);
 
   const getAmPm = () => {
-    const hours = new Date().getHours()
+    const hours = new Date().getHours();
     if (hours < 12) return "AM";
     else return "PM";
   };
@@ -71,20 +69,18 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
           <div className="temperature">
             <span>{temperature}&deg;</span>
           </div>
-          <div className="description">
-            <div className="place-weather-mood">
-              <div className="weather-mood">{weather_mood}</div>
-              <div className="place">
-                {city}, {country}
-              </div>
+          <div className="place-weather-mood font">
+            <div className="weather-mood">{weather_mood}</div>
+            <div className="place">
+              {city}, {country}
             </div>
-            <div className="weather-condition">
+          </div>
+            <div className="weather-condition font">
               <div className="weather-condition-feels-like">Feels like</div>
               <div className="weather-condition-text">{feels_like}&deg;</div>
             </div>
-          </div>
         </div>
-        <div className="date">{new Date().toLocaleDateString()}</div>
+        <div className="date font">{new Date().toLocaleDateString()}</div>
       </div>
       <div className="weatherIcon-2">
         <div className="weatherIcon-2-child">
@@ -92,9 +88,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
           <div className="text">
             <div className="text-primary">
               {time.slice(0, 5)}
-              <span className="text-secondary">
-                {getAmPm()}
-              </span>
+              <span className="text-secondary">{getAmPm()}</span>
             </div>
           </div>
         </div>
@@ -112,7 +106,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
         <div className="weatherIcon-2-child">
           <div className="wi-humidity icon"></div>
           <div className="text">
-            <div className="text-primary" >
+            <div className="text-primary">
               {humidity}
               <span className="text-secondary">%</span>
             </div>

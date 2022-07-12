@@ -2,6 +2,7 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css);
 
 $border-radius: 20px;
+$font-weight: 600;
 
 .widget {
     position: absolute;
@@ -13,15 +14,18 @@ $border-radius: 20px;
     transform: translate(-50%, -50%);
     flex-wrap: wrap;
     border-radius: $border-radius;
-    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
-    0 17px 17px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+
+    .font {
+        letter-spacing: 2px;
+    }
 
     .weatherIcon {
         flex: 1 100%;
         height: 60%;
         border-top-left-radius: $border-radius;
         border-top-right-radius: $border-radius;
-        background: #FAFAFA;
+        background: #fafafa;
         font-family: weathericons;
         display: flex;
         align-items: center;
@@ -38,7 +42,7 @@ $border-radius: 20px;
         height: 18%;
         border-bottom-left-radius: $border-radius;
         border-bottom-right-radius: $border-radius;
-        background: #FAFAFA;
+        background: #fafafa;
         font-family: weathericons;
         display: flex;
         align-items: center;
@@ -51,11 +55,11 @@ $border-radius: 20px;
 
         .weatherIcon-2-child {
             display: flex;
-            flex: 0 0 20%;
+            flex: 0 0 19%;
             justify-content: space-evenly;
             .icon {
                 color: rgb(160, 0, 160);
-                font-size: 24px;
+                font-size: 29px;
             }
 
             .text {
@@ -63,11 +67,11 @@ $border-radius: 20px;
                 display: flex;
 
                 .text-primary {
-                    font-size: 24px;
+                    font-size: 28px;
                 }
 
                 .text-secondary {
-                    font-size: 15px;
+                    font-size: 19px;
                 }
             }
         }
@@ -87,46 +91,40 @@ $border-radius: 20px;
             display: flex;
             align-items: center;
             color: white;
-            justify-content: center;
+            justify-content: space-evenly;
 
             .temperature {
-                flex: 0 0 40%;
                 font-size: 55px;
             }
 
-            .description {
-                flex: 0 55%;
+            .place-weather-mood {
                 display: flex;
-                justify-content: space-evenly;
-                align-items: center;
+                flex-direction: column;
+                position: relative;
+                right: 5px;
 
-                .place-weather-mood {
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-                    right: 5px;
-
-                    .weather-mood {
-                        font-size: 35px;
-                    }
-
-                    .place {
-                        font-size: 16px;
-                    }
+                .weather-mood {
+                    font-size: 35px;
                 }
 
-                .weather-condition {
-                    display: flex;
-                    flex-direction: column;
-                    position: relative;
-                    top: 5px;
-                    .weather-condition-text {
-                        font-size: 35px;
-                    }
+                .place {
+                    font-size: 16px;
+                    font-weight: $font-weight;
+                }
+            }
 
-                    .weather-condition-feels-like {
-                        font-size: 16px;
-                    }
+            .weather-condition {
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                top: 5px;
+                .weather-condition-text {
+                    font-size: 35px;
+                }
+
+                .weather-condition-feels-like {
+                    font-size: 16px;
+                    font-weight: $font-weight;
                 }
             }
         }
