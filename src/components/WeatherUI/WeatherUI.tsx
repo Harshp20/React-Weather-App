@@ -42,6 +42,10 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
   } = weatherData;
 
   useEffect(() => {
+    getTime();
+  }, [timeCounter]);
+
+  const getTime = () => {
     setTimeout(() => {
       setTimeCounter(new Date().toLocaleTimeString());
       setTime(() => {
@@ -51,7 +55,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
         return `${String(hours).padStart(2, "0")}:${minutes} ${getAmPm()}`;
       });
     }, 1000);
-  }, [timeCounter]);
+  };
 
   const getAmPm = () => {
     const hours = new Date().getHours();
@@ -75,10 +79,10 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
               {city}, {country}
             </div>
           </div>
-            <div className="weather-condition font">
-              <div className="weather-condition-feels-like">Feels like</div>
-              <div className="weather-condition-text">{feels_like}&deg;</div>
-            </div>
+          <div className="weather-condition font">
+            <div className="weather-condition-feels-like">Feels like</div>
+            <div className="weather-condition-text">{feels_like}&deg;</div>
+          </div>
         </div>
         <div className="date font">{new Date().toLocaleDateString()}</div>
       </div>

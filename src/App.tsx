@@ -16,7 +16,7 @@ function App() {
     getWeatherData(default_city);
   }, []);
 
-  const createWeatherObject = (data: any) => {
+  const createWeatherDataObject = (data: any) => {
     const [{ main: weather_mood }] = data.weather;
     const {
       temp: temperature,
@@ -58,7 +58,7 @@ function App() {
       .then(({ data }) => {
         if (showError === true) setShowError(false);
         if (data !== null) {
-          setWeatherData(createWeatherObject(data));
+          setWeatherData(createWeatherDataObject(data));
           setIsLoading(false);
         }
       })
