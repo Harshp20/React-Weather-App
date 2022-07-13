@@ -73,7 +73,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData, isLoading }) => {
       <div className="weather-info-date-container">
         <div className="weatherInfo">
           <div className="temperature">
-            {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : <span>{temperature}&deg;</span>}
+            {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={20} /> : <span>{temperature}&deg;</span>}
           </div>
           <div className="place-weather-mood font">
             <div className="weather-mood">{isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} />: weather_mood}</div>

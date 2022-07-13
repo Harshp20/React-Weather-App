@@ -3,7 +3,6 @@ import axios from "axios";
 import WeatherUI from "./components/WeatherUI/WeatherUI";
 import { Weather } from "./components/WeatherUI/WeatherUI";
 import SearchInput from "./components/SearchInput/SearchInput";
-import Loader from "./components/Loader/Loader";
 import "./App.scss";
 
 function App() {
