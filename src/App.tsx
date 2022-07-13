@@ -1,35 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import WeatherUI from "./components/WeatherUI/WeatherUI";
-import "./App.scss";
 import { Weather } from "./components/WeatherUI/WeatherUI";
 import SearchInput from "./components/SearchInput/SearchInput";
+import "./App.scss";
 
 function App() {
   const [weatherData, setWeatherData] = useState({} as Weather);
   const [showError, setShowError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const errorText = `Couldn't fetch weather data at the moment. Please try again in a while...`;
-  const default_city_Name = "Liverpool";
+  const errorText = `Couldn't fetch weather data at the moment. Please try again...`;
+  const default_city = "Liverpool";
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${default_city_Name}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
-      )
-      .then(({ data }) => {
-        if (showError === true) setShowError(false);
-        if (data !== null) {
-          setWeatherData(createWeatherObject(data));
-          setIsLoading(false);
-        }
-      })
-      .catch((err) => {
-        setIsLoading(false);
-        setShowError(true);
-        console.error(err);
-      });
+    getWeatherData(default_city);
   }, []);
 
   const createWeatherObject = (data: any) => {
@@ -65,12 +49,11 @@ function App() {
     return weatherInfo;
   };
 
-  const handleClick = (searchInput: string) => {
-    if (searchInput === "") return;
+  const getWeatherData = (searchCity: string) => {
     setIsLoading(true);
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
       )
       .then(({ data }) => {
         if (showError === true) setShowError(false);
@@ -84,6 +67,11 @@ function App() {
         setShowError(true);
         console.error(err);
       });
+  };
+
+  const handleClick = (searchInput: string) => {
+    if (searchInput === "") return;
+    getWeatherData(searchInput)
   };
 
   return (
