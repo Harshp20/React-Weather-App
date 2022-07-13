@@ -3,6 +3,7 @@ import axios from "axios";
 import WeatherUI from "./components/WeatherUI/WeatherUI";
 import { Weather } from "./components/WeatherUI/WeatherUI";
 import SearchInput from "./components/SearchInput/SearchInput";
+import Loader from "./components/Loader/Loader";
 import "./App.scss";
 
 function App() {
@@ -49,9 +50,9 @@ function App() {
     return weatherInfo;
   };
 
-  const getWeatherData = (searchCity: string) => {
+  const getWeatherData = async (searchCity: string) => {
     setIsLoading(true);
-    axios
+    await axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
       )
@@ -71,7 +72,7 @@ function App() {
 
   const handleClick = (searchInput: string) => {
     if (searchInput === "") return;
-    getWeatherData(searchInput)
+    getWeatherData(searchInput);
   };
 
   return (
@@ -81,11 +82,7 @@ function App() {
       ) : (
         <>
           <SearchInput handleClick={handleClick} />
-          {isLoading ? (
-            <div className="message">Loading...</div>
-          ) : (
-            <WeatherUI weatherData={weatherData} />
-          )}
+          <WeatherUI weatherData={weatherData} isLoading={isLoading} />
         </>
       )}
     </>

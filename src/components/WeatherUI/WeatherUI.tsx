@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Loader from '../Loader/Loader'
 import "./WeatherUI.scss";
 
 export type Weather = {
@@ -18,9 +19,10 @@ export type Weather = {
 
 interface WeatherProps {
   weatherData: Weather;
+  isLoading?: boolean
 }
 
-const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
+const WeatherUI: React.FC<WeatherProps> = ({ weatherData, isLoading }) => {
   const [weatherMood, setWeatherMood] = useState("wi wi-day-cloudy");
   const [timeCounter, setTimeCounter] = useState(
     new Date().toLocaleTimeString()
@@ -66,22 +68,22 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
   return (
     <div className="widget">
       <div className="weatherIcon">
-        <i className={weatherMood}></i>
+        {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={40} /> : <i className={weatherMood}></i>}
       </div>
       <div className="weather-info-date-container">
         <div className="weatherInfo">
           <div className="temperature">
-            <span>{temperature}&deg;</span>
+            {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : <span>{temperature}&deg;</span>}
           </div>
           <div className="place-weather-mood font">
-            <div className="weather-mood">{weather_mood}</div>
+            <div className="weather-mood">{isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} />: weather_mood}</div>
             <div className="place">
-              {city}, {country}
+              {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : `${city}, ${country}`}
             </div>
           </div>
           <div className="weather-condition font">
             <div className="weather-condition-feels-like">Feels like</div>
-            <div className="weather-condition-text">{feels_like}&deg;</div>
+            <div className="weather-condition-text">{isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : <span>{feels_like}&deg;</span>}</div>
           </div>
         </div>
         <div className="date font">{new Date().toLocaleDateString()}</div>
@@ -101,7 +103,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
           <div className="wi-barometer icon"></div>
           <div className="text">
             <div className="text-primary">
-              {pressure}
+              {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : pressure}
               <span className="text-secondary">hPa</span>
             </div>
           </div>
@@ -111,7 +113,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
           <div className="wi-humidity icon"></div>
           <div className="text">
             <div className="text-primary">
-              {humidity}
+              {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : humidity}
               <span className="text-secondary">%</span>
             </div>
           </div>
@@ -121,7 +123,7 @@ const WeatherUI: React.FC<WeatherProps> = ({ weatherData }) => {
           <div className="wi-strong-wind icon"></div>
           <div className="text">
             <div className="text-primary">
-              {wind_speed}
+              {isLoading ? <Loader loaderColour={'purple'} isLoading={isLoading} size={10} /> : wind_speed}
               <span className="text-secondary">Kmph</span>
             </div>
           </div>
