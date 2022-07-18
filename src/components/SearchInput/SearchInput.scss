@@ -25,13 +25,15 @@
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
         letter-spacing: 5px;
     }
-
     ::placeholder {
         text-align: center;
         color: white;
         font-size: 17px;
         font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
         letter-spacing: 5px;
+    }
+    :focus::placeholder {
+        color: transparent;
     }
 
     .icon {
