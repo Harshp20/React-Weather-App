@@ -79,7 +79,9 @@ function App() {
       {showError ? (
         <>
           <div className="message">{errorText}</div>
-          <div className="retry" onClick={() => window.location.reload()}>Go back</div>
+          <div className="retry" onClick={() => window.location.reload()}>
+            <button>Go back</button>
+          </div>
         </>
       ) : (
         <>
