@@ -1,8 +1,28 @@
 .message {
+    text-align: center;
     position: inherit;
     color: white;
     font-size: 1.8em;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     letter-spacing: 4px;
     margin-top: 16%;
+}
+
+.retry {
+    text-align: center;
+    margin-top: 2rem;
+    
+    button {
+        font-size: 1.8em;
+        color: white;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+        letter-spacing: 4px;
+        border: 2px solid #ff9100;
+        border-radius: 6px;
+        padding: 1rem 2.5rem;
+        background: rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+    }:hover {
+        background: rgba(0, 0, 0, 0.5);
+    }
 }

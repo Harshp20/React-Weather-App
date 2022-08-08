@@ -1,6 +1,13 @@
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
 import { useState } from "react";
 import "./SearchInput.scss";
+import PlacesAutocomplete from 'react-places-autocomplete';
+import Loader from '../Loader/Loader'
+
+// import {
+//   geocodeByAddress,
+//   geocodeByPlaceId,
+//   getLatLng,
+// } from 'react-places-autocomplete';
 
 interface SearchInputProps {
   handleClick: (searchInput: string) => void;
@@ -9,19 +16,45 @@ interface SearchInputProps {
 const SearchInput: React.FC<SearchInputProps> = ({ handleClick }) => {
   const [searchInput, setSearchInput] = useState("");
 
+  const mockData = [
+    { description: 'Indore' },
+    { description: 'Kuala Lumpur' },
+    { description: 'New York' },
+    { description: 'Illinois' },
+    { description: 'Indianapolis' }
+  ]
+
+  const handleSelect = (selection: string) => {
+    setSearchInput(selection)
+    handleClick(searchInput)
+  }
+
   return (
-    <div className="input">
-      <input
-        onChange={(e) => setSearchInput(e.target.value)}
-        className="search-input"
-        type="text"
-        placeholder="Type to search..."
-      />
-      <i
-        onClick={() => handleClick(searchInput)}
-        className="fa-brands fa-searchengin icon"
-      ></i>
-    </div>
+    <>
+      <PlacesAutocomplete value={searchInput} onChange={setSearchInput} onSelect={handleSelect}>
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+          return (
+            <>
+              <div className="input">
+                <input {...getInputProps({ placeholder: 'Search a place...', className: "search-input" })} />
+                <div className="suggestions-container">
+                  {loading ? <div style={{marginTop: '1rem'}}><Loader loaderColour={'white'} isLoading={loading} size={35} /></div> : (
+                    suggestions.map((suggestion, index) => {
+                      return (
+                        <div
+                          {...getSuggestionItemProps(suggestion, {
+                            className: 'suggestions',
+                          })}
+                          key={index}>{suggestion.description}</div>
+                      )
+                    }))}
+                </div>
+              </div>
+            </>
+          )
+        }}
+      </PlacesAutocomplete>
+    </>
   );
 };
 

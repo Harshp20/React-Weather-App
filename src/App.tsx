@@ -53,7 +53,7 @@ function App() {
     setIsLoading(true);
     await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       )
       .then(({ data }) => {
         if (showError === true) setShowError(false);
@@ -77,7 +77,10 @@ function App() {
   return (
     <>
       {showError ? (
-        <div className="message">{errorText}</div>
+        <>
+          <div className="message">{errorText}</div>
+          <div className="retry" onClick={() => window.location.reload()}>Go back</div>
+        </>
       ) : (
         <>
           <SearchInput handleClick={handleClick} />
