@@ -11,7 +11,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ handleClick }) => {
   const [searchInput, setSearchInput] = useState("");
 
   return (
-    <>
       <PlacesAutocomplete value={searchInput} onChange={setSearchInput} onSelect={handleClick}>
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
           return (
@@ -33,7 +32,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ handleClick }) => {
           )
         }}
       </PlacesAutocomplete>
-    </>
   );
 };
 

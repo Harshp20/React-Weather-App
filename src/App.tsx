@@ -49,11 +49,13 @@ function App() {
     return weatherInfo;
   };
 
-  const getWeatherData = async (searchCity: string) => {
+  const getWeatherData = async (searchInput: string) => {
+    if (searchInput === "") return;
+
     setIsLoading(true);
     await axios
       .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       )
       .then(({ data }) => {
         if (showError === true) setShowError(false);
@@ -69,11 +71,6 @@ function App() {
       });
   };
 
-  const handleClick = (searchInput: string) => {
-    if (searchInput === "") return;
-    getWeatherData(searchInput);
-  };
-
   return (
     <>
       {showError ? (
@@ -85,7 +82,7 @@ function App() {
         </>
       ) : (
         <>
-          <SearchInput handleClick={handleClick} />
+          <SearchInput handleClick={getWeatherData} />
           <WeatherUI weatherData={weatherData} isLoading={isLoading} />
         </>
       )}
