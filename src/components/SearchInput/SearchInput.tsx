@@ -9,13 +9,10 @@ interface SearchInputProps {
 
 const SearchInput: React.FC<SearchInputProps> = ({ handleClick }) => {
   const [searchInput, setSearchInput] = useState("");
-  const handleSelect = (selection: string) => {
-    setSearchInput(selection)
-    handleClick(searchInput)
-  }
+
   return (
     <>
-      <PlacesAutocomplete value={searchInput} onChange={setSearchInput} onSelect={handleSelect}>
+      <PlacesAutocomplete value={searchInput} onChange={setSearchInput} onSelect={handleClick}>
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
           return (
             <div className="input">
