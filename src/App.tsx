@@ -74,12 +74,12 @@ function App() {
   return (
     <>
       {showError ? (
-        <>
+        <div className="error-info">
           <div className="message">{errorText}</div>
           <div className="retry" onClick={() => window.location.reload()}>
             <button>Go back</button>
           </div>
-        </>
+        </div>
       ) : (
         <>
           <SearchInput handleClick={getWeatherData} />

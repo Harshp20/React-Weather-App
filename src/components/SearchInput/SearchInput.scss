@@ -1,7 +1,9 @@
 .input {
     position: absolute;
-    top: 15%;
-    left: 32%;
+    top: 8rem;
+    left: 0;
+    right: 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +42,7 @@
 
     .suggestions-container {
         text-align: center;
-        width: 95%;
+        width: 80%;
 
         .suggestions {
             font-size: 1.2em;
