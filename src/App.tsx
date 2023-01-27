@@ -81,10 +81,10 @@ function App() {
           </div>
         </div>
       ) : (
-        <>
+        <div className="main-container">
           <SearchInput handleClick={getWeatherData} />
           <WeatherUI weatherData={weatherData} isLoading={isLoading} />
-        </>
+        </div>
       )}
     </>
   );

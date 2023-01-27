@@ -5,9 +5,6 @@ $border-radius: 20px;
 $font-weight: 600;
 
 .widget {
-    position: absolute;
-    inset: 0;
-    margin: auto;
     flex-direction: column;
     display: flex;
     height: 25rem;
