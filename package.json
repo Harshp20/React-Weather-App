@@ -22,6 +22,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -45,6 +47,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-places-autocomplete": "^7.2.9"
-  }
+    "@types/react-places-autocomplete": "^7.2.9",
+    "gh-pages": "^5.0.0"
+  },
+  "homepage": "http://Harshp20.github.io/Weather-App-Google-AutoComplete"
 }
