@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Weather-App-Google-AutoComplete/static/css/main.79ea0d20.css",
+    "main.css": "/Weather-App-Google-AutoComplete/static/css/main.5be95f5e.css",
     "main.js": "/Weather-App-Google-AutoComplete/static/js/main.d3940a35.js",
     "index.html": "/Weather-App-Google-AutoComplete/index.html",
-    "main.79ea0d20.css.map": "/Weather-App-Google-AutoComplete/static/css/main.79ea0d20.css.map",
+    "main.5be95f5e.css.map": "/Weather-App-Google-AutoComplete/static/css/main.5be95f5e.css.map",
     "main.d3940a35.js.map": "/Weather-App-Google-AutoComplete/static/js/main.d3940a35.js.map"
   },
   "entrypoints": [
-    "static/css/main.79ea0d20.css",
+    "static/css/main.5be95f5e.css",
     "static/js/main.d3940a35.js"
   ]
 }
