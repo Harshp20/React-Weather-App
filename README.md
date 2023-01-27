@@ -1,3 +1,17 @@
+<h1 align="center">Weather App with Google Places Auto Complete</h1>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/31449970/215161310-c3420013-84f3-4180-8fa6-8262c7805a75.png" width='1000'>
+<br>
+<h4 align="center">
+
+</h4>
+</p>
+  <p align="center">⭐️ Star | 🔱 Fork on GitHub </p>
+  <p align="center">
+  <img src="https://img.shields.io/badge/Built%20with-React-purple" />
+  </p>
+<p align='center'><a href='https://github.com/Harshp20'><img  src='https://img.shields.io/badge/Developed%20By-Harsh%20Pradhan-red'></a></p>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
